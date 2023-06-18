@@ -22,7 +22,7 @@ public class Spot {
 
     private  int pricePerHour;
 
-     private boolean  occupied;
+     private Boolean  occupied;
 
 
      @ManyToOne
@@ -37,7 +37,7 @@ public class Spot {
     }
 
 
-    public Spot(int id, SpotType spotType, int pricePerHour, boolean occupied, ParkingLot parkingLot, List<Reservation> reservationList) {
+    public Spot(int id, SpotType spotType, int pricePerHour, Boolean occupied, ParkingLot parkingLot, List<Reservation> reservationList) {
         this.id = id;
         this.spotType = spotType;
         this.pricePerHour = pricePerHour;
@@ -75,7 +75,7 @@ public class Spot {
         return occupied;
     }
 
-    public void setOccupied(boolean occupied) {
+    public void setOccupied(Boolean occupied) {
         this.occupied = occupied;
     }
 
