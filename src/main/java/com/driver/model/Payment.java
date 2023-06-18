@@ -15,7 +15,7 @@ public class Payment {
 
 
     @Enumerated(value=EnumType.STRING)
-    PaymentMode paymentMode;
+     private PaymentMode paymentMode;
 
    @OneToOne
    @JoinColumn

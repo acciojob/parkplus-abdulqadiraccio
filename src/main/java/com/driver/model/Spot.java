@@ -18,7 +18,7 @@ public class Spot {
 
 
     @Enumerated(value=EnumType.STRING)
-    SpotType spotType;
+     private SpotType spotType;
 
     private  int pricePerHour;
 
