@@ -24,6 +24,7 @@ public class Payment {
     public Payment() {
     }
 
+
     public Payment(int id, Boolean paymentCompleted, PaymentMode paymentMode, Reservation reservation) {
         this.id = id;
         this.paymentCompleted = paymentCompleted;
@@ -39,7 +40,7 @@ public class Payment {
         this.id = id;
     }
 
-    public boolean getPaymentCompleted() {
+    public Boolean getPaymentCompleted() {
         return paymentCompleted;
     }
 
