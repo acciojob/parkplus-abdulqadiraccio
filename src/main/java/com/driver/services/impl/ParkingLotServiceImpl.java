@@ -36,8 +36,8 @@ public class ParkingLotServiceImpl implements ParkingLotService {
         Spot spot = new Spot();
 
         if(numberOfWheels<=2){spot.setSpotType(SpotType.TWO_WHEELER);}
-        if(numberOfWheels<=2||numberOfWheels<=4){spot.setSpotType(SpotType.FOUR_WHEELER);}
-        if(numberOfWheels>4){spot.setSpotType(SpotType.OTHERS);}
+        else if(numberOfWheels<=4){spot.setSpotType(SpotType.FOUR_WHEELER);}
+        else if(numberOfWheels>4){spot.setSpotType(SpotType.OTHERS);}
 
 
         spot.setPricePerHour(pricePerHour);
@@ -45,7 +45,7 @@ public class ParkingLotServiceImpl implements ParkingLotService {
 
     ParkingLot parkingLot = parkingLotRepository1.findById(parkingLotId).get();
 
-        spotRepository1.save(spot);
+     //   spotRepository1.save(spot);
     List<Spot> spotList= parkingLot.getSpotList();
     spotList.add(spot);
 
@@ -59,9 +59,10 @@ public class ParkingLotServiceImpl implements ParkingLotService {
     @Override
         public void deleteSpot(int spotId) {
 
-        Spot spot1 = spotRepository1.findById(spotId).get();
+     /* Spot spot1 = spotRepository1.findById(spotId).get();
         ParkingLot parkingLot1= spot1.getParkingLot();
         parkingLot1.getSpotList().remove(spot1);
+        parkingLotRepository1.save(parkingLot1)*/
         spotRepository1.deleteById(spotId);
 
 
@@ -70,13 +71,17 @@ public class ParkingLotServiceImpl implements ParkingLotService {
     @Override
     public Spot updateSpot(int parkingLotId, int spotId, int pricePerHour) {
      ParkingLot parkingLot= parkingLotRepository1.findById(parkingLotId).get();
-     Spot spot = spotRepository1.findById(spotId).get();
+
+     Spot spot=spotRepository1.findById(spotId).get();
+
+     Spot updatedSpot=null;
+
      if(parkingLot.getSpotList().contains(spot)){
-       spot.setPricePerHour(pricePerHour);
-       Spot updatedSpot = spotRepository1.save(spot);
-       return updatedSpot;
-    }
-     return spot;}
+    spot.setPricePerHour(pricePerHour);
+    updatedSpot=spotRepository1.save(spot);
+        }
+
+     return updatedSpot;}
 
     @Override
     public void deleteParkingLot(int parkingLotId) {

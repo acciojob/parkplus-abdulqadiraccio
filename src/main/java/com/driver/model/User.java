@@ -32,7 +32,7 @@ public class User {
         this.reservationList = reservationList;
     }
 
-    public User(String name, String phoneNumber, String password) {
+    public User(String name, String phoneNo, String password) {
         this.name = name;
         this.password = password;
         this.phoneNo = phoneNo;
