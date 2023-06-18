@@ -30,9 +30,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void register(String name, String phoneNo, String password) {
+    public void register(String name, String phoneNumber, String password) {
 
-        User user= new User(name, phoneNo, password);
+        User user= new User();
+        user.setName(name);
+        user.setPhoneNo(phoneNumber);
+        user.setPassword(password);
         userRepository4.save(user);
 
 
