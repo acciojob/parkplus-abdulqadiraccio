@@ -13,7 +13,9 @@ public class Payment {
 
    private  boolean paymentCompleted ;
 
-   PaymentMode paymentMode;
+
+    @Enumerated(value=EnumType.STRING)
+    PaymentMode paymentMode;
 
    @OneToOne
    @JoinColumn
