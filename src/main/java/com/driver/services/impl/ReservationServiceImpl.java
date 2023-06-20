@@ -80,7 +80,9 @@ public class ReservationServiceImpl implements ReservationService {
  reservation.setSpot(reservedSpot);
  reservation.setNumberOfHours(timeInHours);
 
- List<Reservation> reservations=user.getReservationList();
+       reservation = reservationRepository3.save(reservation);
+
+ List<Reservation> reservations=  user.getReservationList();
  List<Reservation> reservationList = reservedSpot.getReservationList();
 
  reservationList.add(reservation);
@@ -89,6 +91,8 @@ public class ReservationServiceImpl implements ReservationService {
  user.setReservationList(reservations);
 
  reservedSpot.setReservationList(reservationList);
+
+
 
  userRepository3.save(user);
 
