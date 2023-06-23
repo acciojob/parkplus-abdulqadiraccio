@@ -54,4 +54,10 @@ public class ParkingLotController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/{parkingLotId}")
+    public ResponseEntity<ParkingLot> getParkingLot(@PathVariable int parkingLotId){
+       ParkingLot p= parkingLotService.getParkingLot( parkingLotId);
+        return new ResponseEntity<>(p, HttpStatus.OK);
+    }
+
 }

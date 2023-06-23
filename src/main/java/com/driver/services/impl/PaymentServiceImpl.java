@@ -1,5 +1,6 @@
 package com.driver.services.impl;
 
+
 import com.driver.model.Payment;
 import com.driver.model.PaymentMode;
 import com.driver.model.Reservation;
@@ -25,9 +26,8 @@ public class PaymentServiceImpl implements PaymentService {
         Spot spot= reservation.getSpot();
         int bill= reservation.getNumberOfHours()* spot.getPricePerHour();
 
-       // payment.setReservation(reservation);
+
         String updatedMode = mode.toUpperCase();
-       // payment.setPaymentCompleted(false);
         if(updatedMode.equals("CASH")){
             payment.setPaymentMode(PaymentMode.CASH);
         }
