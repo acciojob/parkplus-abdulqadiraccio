@@ -41,10 +41,14 @@ public class ParkingLotController {
     }
 
     @PutMapping("/{parkingLotId}/spot/{spotId}/update")
-    public ResponseEntity<Spot> updateSpot(@PathVariable int parkingLotId, @PathVariable int spotId, @RequestParam int pricePerHour) {
+    public ResponseEntity<Spot> updateSpot(@PathVariable int parkingLotId, @PathVariable int spotId, @RequestParam int pricePerHour) throws Exception {
         //update the details of a spot
-       Spot  updatedSpot= parkingLotService.updateSpot(parkingLotId,spotId,pricePerHour);
-        return new ResponseEntity<>(updatedSpot, HttpStatus.OK);
+       try{
+           return new ResponseEntity<>(parkingLotService.updateSpot(parkingLotId,spotId,pricePerHour),HttpStatus.OK);
+       } catch(Exception e){
+           return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
+       }
+
     }
 
     @DeleteMapping("/{parkingLotId}/delete")
