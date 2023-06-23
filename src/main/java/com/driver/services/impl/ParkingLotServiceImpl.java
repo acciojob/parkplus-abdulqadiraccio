@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
@@ -71,17 +70,13 @@ public class ParkingLotServiceImpl implements ParkingLotService {
     }
 
     @Override
-    public Spot updateSpot(int parkingLotId, int spotId, int pricePerHour) throws Exception {
+    public Spot updateSpot(int parkingLotId, int spotId, int pricePerHour) {
      ParkingLot parkingLot = parkingLotRepository1.findById(parkingLotId).get();
 
-        Optional<Spot> optionalSpot= spotRepository1.findById(spotId);
-    if(!optionalSpot.isPresent()){
-        throw new Exception("No value present");
-    }
-
-     Spot spot=optionalSpot.get();
+        Spot spot = spotRepository1.findById(spotId).get();
 
      Spot updatedSpot  =  null;
+
     List<Spot> spotList= parkingLot.getSpotList();
      if(spotList.contains(spot)){
     spot.setPricePerHour(pricePerHour);

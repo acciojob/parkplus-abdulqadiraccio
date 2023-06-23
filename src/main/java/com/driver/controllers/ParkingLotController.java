@@ -1,6 +1,5 @@
 package com.driver.controllers;
 
-import com.driver.services.ParkingLotService;
 import com.driver.services.impl.ParkingLotServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,13 +40,11 @@ public class ParkingLotController {
     }
 
     @PutMapping("/{parkingLotId}/spot/{spotId}/update")
-    public ResponseEntity<Spot> updateSpot(@PathVariable int parkingLotId, @PathVariable int spotId, @RequestParam int pricePerHour) throws Exception {
+    public ResponseEntity<Spot> updateSpot(@PathVariable int parkingLotId, @PathVariable int spotId, @RequestParam int pricePerHour)  {
         //update the details of a spot
-       try{
+
            return new ResponseEntity<>(parkingLotService.updateSpot(parkingLotId,spotId,pricePerHour),HttpStatus.OK);
-       } catch(Exception e){
-           return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
-       }
+
 
     }
 
